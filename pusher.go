@@ -88,6 +88,7 @@ func (s *AliMobilePusher) pushNoticeIOS(param *PushParam) (*PushResponse, error)
 func (s *AliMobilePusher) pushNoticeAndroid(param *PushParam) (*PushResponse, error) {
 	//request := push.CreatePushNoticeToAndroidRequest()
 	request := push.CreatePushRequest()
+	request.PushType = "NOTICE"
 	request.AndroidNotificationChannel = param.AndroidNotifyChannel
 	request.AndroidExtParameters = param.Ext
 	request.Title = param.Title
