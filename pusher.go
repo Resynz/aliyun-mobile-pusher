@@ -89,6 +89,7 @@ func (s *AliMobilePusher) pushNoticeAndroid(param *PushParam) (*PushResponse, er
 	//request := push.CreatePushNoticeToAndroidRequest()
 	request := push.CreatePushRequest()
 	request.PushType = "NOTICE"
+	request.DeviceType = "ANDROID"
 	request.AndroidNotificationChannel = param.AndroidNotifyChannel
 	request.AndroidExtParameters = param.Ext
 	request.Title = param.Title
