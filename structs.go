@@ -14,16 +14,19 @@ type Config struct {
 
 // 推送参数
 type PushParam struct {
-	Platform             PushPlatform `json:"platform"`
-	Type                 PushType     `json:"type"`
-	ApnsEnv              ApnsEnv      `json:"apns_env"`
-	AppKey               string       `json:"app_key"`
-	Title                string       `json:"title"`
-	Body                 string       `json:"body"`
-	TargetType           Target       `json:"target_type"`
-	TargetValue          string       `json:"target_value"`
-	Ext                  string       `json:"ext"`
-	AndroidNotifyChannel string       `json:"android_notify_channel"`
+	Platform                         PushPlatform `json:"platform"`
+	Type                             PushType     `json:"type"`
+	ApnsEnv                          ApnsEnv      `json:"apns_env"`
+	AppKey                           string       `json:"app_key"`
+	Title                            string       `json:"title"`
+	Body                             string       `json:"body"`
+	TargetType                       Target       `json:"target_type"`
+	TargetValue                      string       `json:"target_value"`
+	Ext                              string       `json:"ext"`
+	AndroidNotifyChannel             string       `json:"android_notify_channel"`
+	AndroidNotificationXiaomiChannel string       `json:"android_notification_xiaomi_channel"`
+	AndroidNotificationVivoChannel   string       `json:"android_notification_vivo_channel"`
+	AndroidNotificationHuaweiChannel string       `json:"android_notification_huawei_channel"`
 }
 
 func (p *PushParam) toJson() string {
