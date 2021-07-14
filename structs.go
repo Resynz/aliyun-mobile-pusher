@@ -27,6 +27,7 @@ type PushParam struct {
 	AndroidNotificationXiaomiChannel string       `json:"android_notification_xiaomi_channel"`
 	AndroidNotificationVivoChannel   string       `json:"android_notification_vivo_channel"`
 	AndroidNotificationHuaweiChannel string       `json:"android_notification_huawei_channel"`
+	AndroidPopupActivity             string       `json:"android_popup_activity"`
 }
 
 func (p *PushParam) toJson() string {

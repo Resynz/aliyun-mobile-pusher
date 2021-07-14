@@ -94,9 +94,13 @@ func (s *AliMobilePusher) pushNoticeAndroid(param *PushParam) (*PushResponse, er
 	request.AndroidNotificationHuaweiChannel = param.AndroidNotificationHuaweiChannel
 	request.AndroidNotificationXiaomiChannel = param.AndroidNotificationXiaomiChannel
 	request.AndroidNotificationVivoChannel = param.AndroidNotificationVivoChannel
+	request.AndroidNotificationVivoChannel = param.AndroidNotificationVivoChannel
 	request.AndroidExtParameters = param.Ext
 	request.Title = param.Title
 	request.Body = param.Body
+	request.AndroidPopupActivity = param.AndroidPopupActivity
+	request.AndroidPopupTitle = param.Title
+	request.AndroidPopupBody = param.Body
 	request.Target = string(param.TargetType)
 	request.TargetValue = param.TargetValue
 	request.AppKey = requests.Integer(param.AppKey)
