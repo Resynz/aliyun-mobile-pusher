@@ -9,6 +9,7 @@ import (
 	"github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/push"
 	"log"
+	"time"
 )
 
 type AliMobilePusher struct {
@@ -102,6 +103,7 @@ func (s *AliMobilePusher) pushNoticeAndroid(param *PushParam) (*PushResponse, er
 	request.AndroidPopupTitle = param.Title
 	request.AndroidPopupBody = param.Body
 	request.StoreOffline = requests.NewBoolean(true)
+	request.ExpireTime = time.Now().Add(time.Hour * 72).Format(time.RFC3339)
 	request.Target = string(param.TargetType)
 	request.TargetValue = param.TargetValue
 	request.AppKey = requests.Integer(param.AppKey)
