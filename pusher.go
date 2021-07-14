@@ -103,7 +103,7 @@ func (s *AliMobilePusher) pushNoticeAndroid(param *PushParam) (*PushResponse, er
 	request.AndroidPopupTitle = param.Title
 	request.AndroidPopupBody = param.Body
 	request.StoreOffline = requests.NewBoolean(true)
-	request.ExpireTime = time.Now().Add(time.Hour * 72).Format(time.RFC3339)
+	request.ExpireTime = time.Now().Add(time.Hour * 72).Format("2006-01-02T15:04:05Z")
 	request.Target = string(param.TargetType)
 	request.TargetValue = param.TargetValue
 	request.AppKey = requests.Integer(param.AppKey)
