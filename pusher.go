@@ -101,6 +101,7 @@ func (s *AliMobilePusher) pushNoticeAndroid(param *PushParam) (*PushResponse, er
 	request.AndroidPopupActivity = param.AndroidPopupActivity
 	request.AndroidPopupTitle = param.Title
 	request.AndroidPopupBody = param.Body
+	request.StoreOffline = requests.NewBoolean(true)
 	request.Target = string(param.TargetType)
 	request.TargetValue = param.TargetValue
 	request.AppKey = requests.Integer(param.AppKey)
