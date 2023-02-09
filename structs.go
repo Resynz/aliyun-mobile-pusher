@@ -45,3 +45,11 @@ func (p *PushResponse) toJson() string {
 	d, _ := json.Marshal(p)
 	return string(d)
 }
+
+type PushStat struct {
+	AcceptCount   int64 `json:"accept_count"`   // 推送服务端接收到的推送数目
+	OpenedCount   int64 `json:"opened_count"`   // 通知在设备上被点击的数目
+	DeletedCount  int64 `json:"deleted_count"`  // 通知在设备上被清除的数目
+	SentCount     int64 `json:"sent_count"`     // 推送服务端实际发出的数目
+	ReceivedCount int64 `json:"received_count"` // 实际送达到设备的数目
+}
