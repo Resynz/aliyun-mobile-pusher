@@ -6,10 +6,11 @@ package aliyun_mobile_pusher
 
 import (
 	"fmt"
-	"github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
-	"github.com/aliyun/alibaba-cloud-sdk-go/services/push"
 	"log"
 	"time"
+
+	"github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
+	"github.com/aliyun/alibaba-cloud-sdk-go/services/push"
 )
 
 type AliMobilePusher struct {
@@ -67,15 +68,22 @@ func (s *AliMobilePusher) pushMessageAndroid(param *PushParam) (*PushResponse, e
 }
 
 func (s *AliMobilePusher) pushNoticeIOS(param *PushParam) (*PushResponse, error) {
-	request := push.CreatePushNoticeToiOSRequest()
-	request.ExtParameters = param.Ext
-	request.ApnsEnv = string(param.ApnsEnv)
+	request := push.CreatePushRequest()
+	request.PushType = "NOTICE"
+	request.DeviceType = "iOS"
+	request.IOSExtParameters = param.Ext
+	request.IOSApnsEnv = string(param.ApnsEnv)
 	request.Title = param.Title
 	request.Body = param.Body
 	request.Target = string(param.TargetType)
 	request.TargetValue = param.TargetValue
 	request.AppKey = requests.Integer(param.AppKey)
-	r, err := s.client.PushNoticeToiOS(request)
+
+	if param.MsgCount > 0 {
+		request.IOSBadge = requests.NewInteger64(param.MsgCount)
+	}
+
+	r, err := s.client.Push(request)
 	if err != nil {
 		return nil, err
 	}
@@ -108,6 +116,10 @@ func (s *AliMobilePusher) pushNoticeAndroid(param *PushParam) (*PushResponse, er
 	request.Target = string(param.TargetType)
 	request.TargetValue = param.TargetValue
 	request.AppKey = requests.Integer(param.AppKey)
+
+	if param.MsgCount > 0 {
+		request.AndroidBadgeSetNum = requests.NewInteger64(param.MsgCount)
+	}
 
 	r, err := s.client.Push(request)
 	if err != nil {
