@@ -80,6 +80,9 @@ func (s *AliMobilePusher) pushNoticeIOS(param *PushParam) (*PushResponse, error)
 	request.AppKey = requests.Integer(param.AppKey)
 
 	if param.MsgCount > 0 {
+		if param.MsgCount > 99 {
+			param.MsgCount = 99
+		}
 		request.IOSBadge = requests.NewInteger64(param.MsgCount)
 	}
 
@@ -118,6 +121,9 @@ func (s *AliMobilePusher) pushNoticeAndroid(param *PushParam) (*PushResponse, er
 	request.AppKey = requests.Integer(param.AppKey)
 
 	if param.MsgCount > 0 {
+		if param.MsgCount > 99 {
+			param.MsgCount = 99
+		}
 		request.AndroidBadgeSetNum = requests.NewInteger64(param.MsgCount)
 	}
 
