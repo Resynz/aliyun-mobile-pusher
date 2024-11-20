@@ -80,9 +80,9 @@ func (s *AliMobilePusher) pushNoticeIOS(param *PushParam) (*PushResponse, error)
 	request.AppKey = requests.Integer(param.AppKey)
 
 	if param.MsgCount > 0 {
-		if param.MsgCount > 99 {
-			param.MsgCount = 99
-		}
+		// if param.MsgCount > 99 {
+		// 	param.MsgCount = 99
+		// }
 		request.IOSBadge = requests.NewInteger64(param.MsgCount)
 	}
 
